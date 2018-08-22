@@ -6,18 +6,13 @@ import { login } from '../../Actions/Auth';
 
 
 class LoginPage extends React.Component {
-
     submit = (data) => 
-        this.props.login(data).then(() => this.props.history.push('/'));
-
+        this.props.login(data).then(() => this.props.history.push('/dashboard'));
     render () {
         return (
-            <div>
+        <div>
             <h1> Login Page </h1>
-    
             <LoginForm submit={this.submit}/>
-            
-            
         </div>
         );
     }
@@ -25,7 +20,7 @@ class LoginPage extends React.Component {
    
 LoginPage.propTypes = {
     history: PropTypes.shape({
-        push: PropTypes.func.isRequired
+    push: PropTypes.func.isRequired
     }).isRequired,
     login: PropTypes.func.isRequired
 };

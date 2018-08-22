@@ -14,15 +14,13 @@ class LoginForm extends React.Component {
         loading: false,
         errors: {}
     }
-        onChange = e => this.setState({ data: { ...this.state.data,
-             [e.target.name]: e.target.value 
-            }});
+        onChange = e => this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value }});
 
         onSubmit = () => {
             const errors = this.validate(this.state.data);
             this.setState({ errors });
             if (Object.keys(errors).length === 0 ) {
-                this.setState({ loading: true});
+                this.setState({ loading: true });
                 this.props.submit(this.state.data)
                 .catch(err => this.setState({ errors: err.response.data.errors, loading: false }));
             }
@@ -39,10 +37,10 @@ class LoginForm extends React.Component {
         return (
             
         <Form onSubmit={this.onSubmit} loading={this.state.loading}>
-            { this.state.errors.global && <Message negative>
+             { this.state.errors.global && (<Message negative>
             <Message.Header>Something went wrong</Message.Header>
             <p>{this.state.errors.global}</p>
-            </Message>}
+            </Message>)} 
           <Form.Field error={!!this.state.errors.email}>
           <label htmlFor="email">Email</label>
           <input
